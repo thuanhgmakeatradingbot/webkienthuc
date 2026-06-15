@@ -1,0 +1,313 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "lesson-01",
+      "match": "^xu huong htf$",
+      "label": "xu huong htf",
+      "concept": "Xu hướng HTF là bộ lọc đầu tiên của một Confluence Setup, giúp ưu tiên giao dịch theo dòng tiền và cấu trúc lớn.",
+      "identify": [
+        "Đọc cấu trúc Dow trên khung thời gian lớn",
+        "Quan sát vị trí và độ dốc của EMA quan trọng",
+        "Xác định thị trường đang tăng, giảm hay đi ngang"
+      ],
+      "apply": [
+        "Chỉ ưu tiên kịch bản cùng hướng HTF",
+        "Dùng HTF để loại bỏ tín hiệu ngược xu hướng yếu",
+        "Đánh dấu vùng lớn trước khi xuống khung nhỏ"
+      ],
+      "checklist": [
+        "Cấu trúc HTF đã rõ",
+        "EMA và hành vi giá không mâu thuẫn",
+        "Không giao dịch giữa vùng nhiễu",
+        "Đã xác định hướng ưu tiên"
+      ]
+    },
+    {
+      "id": "lesson-02",
+      "match": "^vung gia chinh$",
+      "label": "vung gia chinh",
+      "concept": "Vùng giá chính là nơi thiết lập có xác suất cao hơn vì hội tụ Supply/Demand, cấu trúc và các mốc giá quan trọng.",
+      "identify": [
+        "Tìm vùng tạo ra cú dịch chuyển mạnh",
+        "Ưu tiên vùng liên quan đến BOS hoặc CHOCH",
+        "Kiểm tra vùng còn mới và chưa bị chạm nhiều lần"
+      ],
+      "apply": [
+        "Chờ giá quay về vùng thay vì đuổi theo",
+        "Thu hẹp vùng bằng khung thời gian nhỏ hơn",
+        "Chỉ tìm tín hiệu khi giá thực sự tiếp cận vùng"
+      ],
+      "checklist": [
+        "Vùng phù hợp hướng HTF",
+        "Có cấu trúc hỗ trợ",
+        "Vùng chưa bị suy yếu",
+        "Còn đủ khoảng trống tới mục tiêu"
+      ]
+    },
+    {
+      "id": "lesson-03",
+      "match": "^xac nhan$",
+      "label": "xac nhan",
+      "concept": "Xác nhận là bước chứng minh bên mua hoặc bên bán đã thực sự phản ứng tại vùng giá, giúp tránh vào lệnh quá sớm.",
+      "identify": [
+        "Tìm Price Action rõ ràng tại vùng",
+        "Quan sát RSI và động lượng có đồng thuận",
+        "Chờ BOS hoặc CHOCH trên khung vào lệnh"
+      ],
+      "apply": [
+        "Chỉ kích hoạt lệnh sau khi tín hiệu đóng nến",
+        "Dùng điểm xác nhận để xác định điểm vô hiệu",
+        "Bỏ qua thiết lập nếu phản ứng yếu hoặc mâu thuẫn"
+      ],
+      "checklist": [
+        "Giá đã vào đúng vùng",
+        "Có tín hiệu đóng nến rõ",
+        "Động lượng hỗ trợ kịch bản",
+        "Điểm vào không quá xa điểm vô hiệu"
+      ]
+    },
+    {
+      "id": "lesson-04",
+      "match": "^mo hinh nen$",
+      "label": "mo hinh nen",
+      "concept": "Mô hình nến là tín hiệu kích hoạt cuối cùng, thể hiện phản ứng mua bán ngay tại vùng giá đã được chuẩn bị trước.",
+      "identify": [
+        "Quan sát vị trí mô hình thay vì chỉ hình dạng",
+        "Ưu tiên nến từ chối mạnh hoặc engulfing rõ",
+        "So sánh kích thước với các nến gần nhất"
+      ],
+      "apply": [
+        "Dùng mức cao/thấp của mô hình làm điểm kích hoạt",
+        "Đặt dừng lỗ ngoài cực trị hợp lý",
+        "Không dùng mô hình nến đơn lẻ giữa vùng nhiễu"
+      ],
+      "checklist": [
+        "Mô hình nằm đúng vùng giá",
+        "Cùng hướng HTF và cấu trúc",
+        "Nến xác nhận đã đóng",
+        "Tỷ lệ lợi nhuận/rủi ro đạt yêu cầu"
+      ]
+    },
+    {
+      "id": "lesson-05",
+      "match": "^quan tri rui ro$",
+      "label": "quan tri rui ro",
+      "concept": "Quản trị rủi ro quyết định khả năng tồn tại lâu dài của hệ thống bằng cách giới hạn tổn thất và chuẩn hóa quy mô lệnh.",
+      "identify": [
+        "Xác định SL theo điểm vô hiệu của cấu trúc",
+        "Đặt TP tại vùng thanh khoản hoặc vùng cản kế tiếp",
+        "Tính RR trước khi đặt lệnh"
+      ],
+      "apply": [
+        "Giữ mức rủi ro cố định cho mỗi giao dịch",
+        "Không nới SL khi kịch bản đã sai",
+        "Giảm khối lượng khi thị trường biến động mạnh"
+      ],
+      "checklist": [
+        "SL nằm tại điểm vô hiệu hợp lý",
+        "TP có cơ sở kỹ thuật",
+        "RR đáp ứng nguyên tắc hệ thống",
+        "Khối lượng lệnh đã được tính trước"
+      ]
+    },
+    {
+      "id": "lesson-06",
+      "match": "swing high|swing low",
+      "label": "swing high|swing low",
+      "concept": "Swing High và Swing Low là các điểm xoay chiều nổi bật, dùng để đọc cấu trúc và xác định hướng đi của giá.",
+      "identify": [
+        "Tìm đỉnh/đáy có phản ứng giá rõ ràng hai bên",
+        "Ưu tiên điểm xoay tạo ra chuyển động mạnh",
+        "Quan sát việc giá phá hay giữ các điểm này"
+      ],
+      "apply": [
+        "Nối các swing để đọc HH, HL, LH, LL",
+        "Đặt cảnh báo quanh swing quan trọng",
+        "Dùng swing gần nhất làm mốc vô hiệu"
+      ],
+      "checklist": [
+        "Swing có thực sự nổi bật",
+        "Cấu trúc hiện tại tăng, giảm hay đi ngang",
+        "Có thanh khoản nằm quanh swing",
+        "Dừng lỗ nằm ngoài vùng nhiễu"
+      ]
+    },
+    {
+      "id": "lesson-07",
+      "match": "supply|demand",
+      "label": "supply|demand",
+      "concept": "Supply và Demand là vùng giá nơi mất cân bằng mua bán từng tạo ra chuyển động mạnh.",
+      "identify": [
+        "Tìm vùng tích lũy ngắn trước cú đẩy mạnh",
+        "Ưu tiên vùng chưa bị kiểm tra nhiều lần",
+        "Đánh giá lực rời vùng và cấu trúc bị phá"
+      ],
+      "apply": [
+        "Chờ giá quay lại vùng thay vì đuổi theo",
+        "Tìm tín hiệu xác nhận tại vùng",
+        "Đặt điểm vô hiệu phía ngoài vùng"
+      ],
+      "checklist": [
+        "Vùng còn mới",
+        "Có cú rời vùng đủ mạnh",
+        "Cùng hướng xu hướng chính",
+        "Có xác nhận trước khi vào lệnh"
+      ]
+    },
+    {
+      "id": "lesson-08",
+      "match": "breakout|retest",
+      "label": "breakout|retest",
+      "concept": "Breakout & Retest mô tả việc giá phá một mốc quan trọng rồi quay lại kiểm tra mốc đó trước khi tiếp diễn.",
+      "identify": [
+        "Nến đóng rõ ràng ngoài vùng cản",
+        "Lực phá đủ mạnh và có sự mở rộng biên độ",
+        "Retest giữ được phía vừa phá"
+      ],
+      "apply": [
+        "Không vào lệnh ngay tại cú phá thiếu xác nhận",
+        "Chờ phản ứng giá tại điểm retest",
+        "Hủy ý tưởng nếu giá đóng trở lại vùng cũ"
+      ],
+      "checklist": [
+        "Breakout có nến đóng xác nhận",
+        "Retest không xuyên sâu",
+        "Không phá vào vùng cản lớn kế tiếp",
+        "Tỷ lệ lợi nhuận/rủi ro hợp lý"
+      ]
+    },
+    {
+      "id": "lesson-09",
+      "match": "bos|choch|market structure",
+      "label": "bos|choch|market structure",
+      "concept": "BOS xác nhận xu hướng tiếp diễn, còn CHOCH cảnh báo cấu trúc có khả năng chuyển hướng.",
+      "identify": [
+        "Đánh dấu các swing có ý nghĩa",
+        "BOS phá swing theo hướng xu hướng",
+        "CHOCH phá swing bảo vệ xu hướng hiện tại"
+      ],
+      "apply": [
+        "Dùng BOS để ưu tiên lệnh thuận xu hướng",
+        "Dùng CHOCH như cảnh báo, chờ thêm xác nhận",
+        "Kết hợp vùng Supply/Demand để tìm điểm vào"
+      ],
+      "checklist": [
+        "Swing bị phá có quan trọng",
+        "Cú phá là thân nến hay chỉ râu nến",
+        "Có vùng giá hỗ trợ ý tưởng",
+        "Điểm vô hiệu đã rõ"
+      ]
+    },
+    {
+      "id": "lesson-10",
+      "match": "liquidity",
+      "label": "liquidity",
+      "concept": "Liquidity Sweep xảy ra khi giá quét qua vùng đặt lệnh phổ biến rồi nhanh chóng quay lại, thường tạo tín hiệu đảo chiều ngắn hạn.",
+      "identify": [
+        "Tìm cụm đỉnh bằng nhau hoặc đáy bằng nhau",
+        "Quan sát cú xuyên mốc rồi đóng trở lại",
+        "Kiểm tra phản ứng mạnh sau cú quét"
+      ],
+      "apply": [
+        "Chờ xác nhận cấu trúc sau cú quét",
+        "Đặt dừng lỗ ngoài cực trị vừa tạo",
+        "Ưu tiên cú quét tại vùng giá quan trọng"
+      ],
+      "checklist": [
+        "Có vùng thanh khoản rõ ràng",
+        "Giá đã đóng trở lại sau cú quét",
+        "Có CHOCH/BOS xác nhận",
+        "Không vào quá muộn"
+      ]
+    },
+    {
+      "id": "lesson-11",
+      "match": "ema|golden cross|death cross",
+      "label": "ema|golden cross|death cross",
+      "concept": "EMA phản ánh giá trung bình có trọng số, giúp nhận diện hướng xu hướng và vùng hỗ trợ/kháng cự động.",
+      "identify": [
+        "Quan sát độ dốc và thứ tự các EMA",
+        "Giá giữ cùng một phía EMA cho thấy xu hướng khỏe",
+        "Giao cắt có ý nghĩa hơn khi đi cùng cấu trúc"
+      ],
+      "apply": [
+        "Dùng EMA làm bộ lọc xu hướng",
+        "Chờ phản ứng giá thay vì chạm EMA là vào lệnh",
+        "Kết hợp cấu trúc và Price Action"
+      ],
+      "checklist": [
+        "EMA có độ dốc rõ",
+        "Giá không đi ngang quanh EMA",
+        "Tín hiệu cùng hướng khung lớn",
+        "Có điểm vô hiệu hợp lý"
+      ]
+    },
+    {
+      "id": "lesson-12",
+      "match": "rsi|phan ky|qua mua|qua ban|trung tam",
+      "label": "rsi|phan ky|qua mua|qua ban|trung tam",
+      "concept": "RSI đo động lượng tương đối, hữu ích để đánh giá sức mạnh xu hướng, vùng cực đoan và phân kỳ.",
+      "identify": [
+        "RSI trên/dưới 50 cho biết thiên hướng động lượng",
+        "Vùng 70/30 chỉ là cảnh báo, không tự động đảo chiều",
+        "Phân kỳ cần đi cùng cấu trúc giá"
+      ],
+      "apply": [
+        "Dùng RSI làm xác nhận thay vì tín hiệu độc lập",
+        "Ưu tiên tín hiệu cùng xu hướng chính",
+        "Chờ Price Action tại vùng quan trọng"
+      ],
+      "checklist": [
+        "Bối cảnh xu hướng đã rõ",
+        "RSI có tín hiệu thực sự nổi bật",
+        "Giá đang ở vùng đáng chú ý",
+        "Có xác nhận từ hành vi giá"
+      ]
+    },
+    {
+      "id": "lesson-13",
+      "match": "pin bar|hammer|engulfing|inside bar|doji|spinning|morning|evening",
+      "label": "pin bar|hammer|engulfing|inside bar|doji|spinning|morning|evening",
+      "concept": "Mô hình nến thể hiện cuộc đấu giữa bên mua và bên bán trong một khoảng thời gian, nhưng chỉ có giá trị khi đặt đúng bối cảnh.",
+      "identify": [
+        "Quan sát vị trí xuất hiện của mô hình",
+        "So sánh kích thước với các nến gần nhất",
+        "Đánh giá hướng đóng cửa và phần râu nến"
+      ],
+      "apply": [
+        "Chờ mô hình tại vùng hỗ trợ/kháng cự hoặc Supply/Demand",
+        "Dùng mức cao/thấp mô hình làm điểm xác nhận",
+        "Không giao dịch mô hình nằm giữa vùng nhiễu"
+      ],
+      "checklist": [
+        "Mô hình nằm đúng vị trí",
+        "Có cấu trúc hoặc xu hướng hỗ trợ",
+        "Nến xác nhận đã đóng",
+        "Rủi ro được giới hạn"
+      ]
+    },
+    {
+      "id": "lesson-14",
+      "match": "htf|mtf|ltf|khung thoi gian",
+      "label": "htf|mtf|ltf|khung thoi gian",
+      "concept": "Phân tích đa khung thời gian giúp nối bối cảnh lớn với vùng thiết lập và điểm vào lệnh chính xác.",
+      "identify": [
+        "HTF xác định xu hướng và vùng lớn",
+        "MTF xây dựng kịch bản giao dịch",
+        "LTF tìm tín hiệu kích hoạt"
+      ],
+      "apply": [
+        "Đi từ khung lớn xuống khung nhỏ",
+        "Không để nhiễu LTF phủ nhận bối cảnh HTF quá sớm",
+        "Chỉ vào lệnh khi các khung không mâu thuẫn lớn"
+      ],
+      "checklist": [
+        "Xu hướng HTF rõ ràng",
+        "Vùng MTF đã xác định",
+        "LTF có tín hiệu xác nhận",
+        "Điểm dừng lỗ phù hợp cấu trúc"
+      ]
+    }
+  ]
+}

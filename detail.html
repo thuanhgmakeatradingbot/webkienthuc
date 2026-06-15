@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chi tiết | PTKT Trading</title>
+<script>
+try {
+  const transition = JSON.parse(sessionStorage.getItem('ptkt-page-transition'));
+  if (transition) {
+    document.documentElement.style.setProperty('--transition-x', `${transition.x}px`);
+    document.documentElement.style.setProperty('--transition-y', `${transition.y}px`);
+    document.documentElement.classList.add('transition-entering');
+    sessionStorage.removeItem('ptkt-page-transition');
+  }
+} catch {}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+:root{--accent:#b7ff00;--bg:#07090d;--panel:#0d131b;--line:#283442;--text:#f3f6fb;--muted:#929cab}
+*{box-sizing:border-box;cursor:url('assets/cursors/bitcoin-cursor.png'),default}
+a,a *,button,button *{cursor:url('assets/cursors/bitcoin-pointer.png'),pointer}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 72% 20%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 35%),linear-gradient(145deg,#080b10,#050609 70%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;overflow-x:hidden}
+body:after{content:"";position:fixed;z-index:999;inset:0;background:#080b10;clip-path:circle(0 at var(--transition-x,50%) var(--transition-y,50%));pointer-events:none;transition:clip-path .55s cubic-bezier(.7,0,.2,1)}
+body.page-leaving:after{clip-path:circle(150vmax at var(--transition-x,50%) var(--transition-y,50%))}
+html.transition-entering body:after{clip-path:circle(150vmax at var(--transition-x,50%) var(--transition-y,50%));transition:none}
+.shell{width:min(1180px,calc(100% - 32px));margin:auto;padding:34px 0 60px;transition:opacity .4s,transform .5s cubic-bezier(.7,0,.2,1),filter .4s}body.page-leaving .shell{opacity:.2;transform:scale(.975);filter:blur(5px)}html.transition-entering .shell{opacity:.28;transform:scale(.985);filter:blur(4px)}
+.back{display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border:1px solid var(--line);border-radius:999px;background:#101720;color:#dbe2eb;text-decoration:none;font-weight:700;font-size:13px;transition:.2s}
+.back:hover{border-color:var(--accent);color:var(--accent);transform:translateX(-3px)}
+.hero{position:relative;margin-top:24px;padding:44px;border:1px solid color-mix(in srgb,var(--accent) 65%,#26303c);border-radius:28px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 9%,#111923),#080c12f5);box-shadow:0 28px 100px #000b,0 0 70px color-mix(in srgb,var(--accent) 12%,transparent);overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(90deg,#0009,transparent 75%);pointer-events:none}
+.crumb,.hero-content{position:relative}.crumb{color:var(--accent);font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.topic{display:flex;align-items:center;gap:18px;margin-top:22px}
+.badge{flex:0 0 auto;min-width:58px;height:58px;padding:0 12px;display:grid;place-items:center;border-radius:18px;background:color-mix(in srgb,var(--accent) 18%,#0b1118);border:1px solid color-mix(in srgb,var(--accent) 60%,#25303c);color:var(--accent);font-family:'Roboto Mono',monospace;font-weight:900}
+h1{margin:0;font-size:clamp(28px,5vw,52px);line-height:1.03;letter-spacing:-1.7px}.description{margin:18px 0 0;color:#abb4c2;font-size:16px;line-height:1.7;max-width:760px}
+.grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px}
+.panel{border:1px solid var(--line);border-radius:18px;background:linear-gradient(150deg,#101720e8,#090d13f2);box-shadow:0 14px 40px #0005;overflow:hidden;transition:border-color .3s,box-shadow .3s,transform .3s}
+.panel:hover{border-color:color-mix(in srgb,var(--accent) 48%,var(--line));transform:translateY(-1px)}.panel.open{border-color:color-mix(in srgb,var(--accent) 70%,var(--line));box-shadow:0 18px 55px #0008,0 0 30px color-mix(in srgb,var(--accent) 10%,transparent)}
+.panel-toggle{width:100%;min-height:76px;padding:20px 24px;border:0;background:transparent;color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left}
+.panel h2{display:flex;align-items:center;gap:14px;margin:0;font-size:17px}.panel h2 span{min-width:30px;color:var(--accent);font-family:'Roboto Mono',monospace;font-size:12px}
+.panel-arrow{position:relative;flex:0 0 auto;width:34px;height:34px;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:50%;transition:transform .35s,background .3s,border-color .3s}.panel-arrow:before,.panel-arrow:after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;border-radius:2px;background:var(--accent);transform:translate(-50%,-50%);transition:transform .35s}.panel-arrow:after{transform:translate(-50%,-50%) rotate(90deg)}.panel.open .panel-arrow{background:color-mix(in srgb,var(--accent) 12%,transparent);border-color:var(--accent);transform:rotate(180deg)}.panel.open .panel-arrow:after{transform:translate(-50%,-50%) rotate(0)}
+.panel-content{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1),opacity .3s}.panel.open .panel-content{grid-template-rows:1fr;opacity:1}.panel-content-inner{min-height:0;overflow:hidden}.panel-content-body{margin:0 24px;padding:0 0 24px;border-top:1px solid #ffffff12;padding-top:20px}
+.panel p,.panel li{color:#c1c9d4;font-size:14px;line-height:1.7}.panel p{margin:0}.panel ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}.panel li{position:relative;padding-left:22px}.panel li:before{content:"";position:absolute;left:0;top:.7em;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.note{margin-top:18px;padding:20px 22px;border-left:3px solid var(--accent);border-radius:4px 16px 16px 4px;background:color-mix(in srgb,var(--accent) 8%,#0c1219);color:#c9d1dc;font-size:13px;line-height:1.7}
+@media(max-width:760px){.shell{width:min(100% - 20px,1180px);padding-top:18px}.hero{padding:26px 20px}.topic{align-items:flex-start}.panel-toggle{min-height:68px;padding:17px 18px}.panel-content-body{margin:0 18px;padding-bottom:20px}.panel h2{font-size:15px}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <a class="back" href="index.html">← Quay lại sơ đồ</a>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="crumb" id="category"></div>
+      <div class="topic"><div class="badge" id="badge"></div><h1 id="title"></h1></div>
+      <p class="description" id="description"></p>
+    </div>
+  </section>
+  <section class="grid">
+    <article class="panel">
+      <button class="panel-toggle" type="button" aria-expanded="false" aria-controls="panel-concept"><h2><span>01</span> Khái niệm cốt lõi</h2><i class="panel-arrow" aria-hidden="true"></i></button>
+      <div class="panel-content" id="panel-concept"><div class="panel-content-inner"><div class="panel-content-body"><p id="concept"></p></div></div></div>
+    </article>
+    <article class="panel">
+      <button class="panel-toggle" type="button" aria-expanded="false" aria-controls="panel-identify"><h2><span>02</span> Cách nhận diện</h2><i class="panel-arrow" aria-hidden="true"></i></button>
+      <div class="panel-content" id="panel-identify"><div class="panel-content-inner"><div class="panel-content-body"><ul id="identify"></ul></div></div></div>
+    </article>
+    <article class="panel">
+      <button class="panel-toggle" type="button" aria-expanded="false" aria-controls="panel-apply"><h2><span>03</span> Cách áp dụng</h2><i class="panel-arrow" aria-hidden="true"></i></button>
+      <div class="panel-content" id="panel-apply"><div class="panel-content-inner"><div class="panel-content-body"><ul id="apply"></ul></div></div></div>
+    </article>
+    <article class="panel">
+      <button class="panel-toggle" type="button" aria-expanded="false" aria-controls="panel-checklist"><h2><span>04</span> Checklist trước giao dịch</h2><i class="panel-arrow" aria-hidden="true"></i></button>
+      <div class="panel-content" id="panel-checklist"><div class="panel-content-inner"><div class="panel-content-body"><ul id="checklist"></ul></div></div></div>
+    </article>
+  </section>
+  <aside class="note">Nội dung mang tính giáo dục. Luôn kiểm tra thêm bối cảnh thị trường, quản trị rủi ro và xác nhận bằng nhiều yếu tố trước khi vào lệnh.</aside>
+</main>
+<script>
+const params = new URLSearchParams(location.search);
+const category = params.get('category') || 'PTKT TRADING';
+const item = params.get('item') || 'Chủ đề phân tích kỹ thuật';
+const description = params.get('description') || 'Nội dung chi tiết cho chủ đề được chọn.';
+const badge = params.get('badge') || 'PTKT';
+const accent = params.get('accent') || '#b7ff00';
+document.documentElement.style.setProperty('--accent', /^#[0-9a-f]{3,8}$/i.test(accent) ? accent : '#b7ff00');
+document.title = `${item} | PTKT Trading`;
+document.querySelector('#category').textContent = category;
+document.querySelector('#title').textContent = item.replace(badge, '').trim();
+document.querySelector('#badge').textContent = badge;
+document.querySelector('#description').textContent = description;
+
+const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const key = normalize(item);
+const defaultInfo = {
+  concept:`${item} là một yếu tố trong hệ thống ${category}. Giá trị của nó đến từ việc đặt đúng vào bối cảnh xu hướng, vùng giá và cấu trúc thị trường.`,
+  identify:['Xác định bối cảnh ở khung thời gian lớn hơn','Chờ tín hiệu rõ ràng, tránh suy diễn khi dữ liệu chưa đủ','So sánh với hành vi giá và khối lượng gần nhất'],
+  apply:['Dùng như một yếu tố xác nhận, không dùng đơn lẻ','Xác định điểm vô hiệu trước khi vào lệnh','Ưu tiên thiết lập có tỷ lệ lợi nhuận/rủi ro phù hợp'],
+  checklist:['Bối cảnh thị trường đã rõ ràng','Có ít nhất hai yếu tố đồng thuận','Điểm dừng lỗ và mục tiêu đã được xác định','Khối lượng lệnh phù hợp với mức rủi ro']
+};
+const lessons = [
+  [/^xu huong htf$/,['Xu hướng HTF là bộ lọc đầu tiên của một Confluence Setup, giúp ưu tiên giao dịch theo dòng tiền và cấu trúc lớn.',['Đọc cấu trúc Dow trên khung thời gian lớn','Quan sát vị trí và độ dốc của EMA quan trọng','Xác định thị trường đang tăng, giảm hay đi ngang'],['Chỉ ưu tiên kịch bản cùng hướng HTF','Dùng HTF để loại bỏ tín hiệu ngược xu hướng yếu','Đánh dấu vùng lớn trước khi xuống khung nhỏ'],['Cấu trúc HTF đã rõ','EMA và hành vi giá không mâu thuẫn','Không giao dịch giữa vùng nhiễu','Đã xác định hướng ưu tiên']]],
+  [/^vung gia chinh$/,['Vùng giá chính là nơi thiết lập có xác suất cao hơn vì hội tụ Supply/Demand, cấu trúc và các mốc giá quan trọng.',['Tìm vùng tạo ra cú dịch chuyển mạnh','Ưu tiên vùng liên quan đến BOS hoặc CHOCH','Kiểm tra vùng còn mới và chưa bị chạm nhiều lần'],['Chờ giá quay về vùng thay vì đuổi theo','Thu hẹp vùng bằng khung thời gian nhỏ hơn','Chỉ tìm tín hiệu khi giá thực sự tiếp cận vùng'],['Vùng phù hợp hướng HTF','Có cấu trúc hỗ trợ','Vùng chưa bị suy yếu','Còn đủ khoảng trống tới mục tiêu']]],
+  [/^xac nhan$/,['Xác nhận là bước chứng minh bên mua hoặc bên bán đã thực sự phản ứng tại vùng giá, giúp tránh vào lệnh quá sớm.',['Tìm Price Action rõ ràng tại vùng','Quan sát RSI và động lượng có đồng thuận','Chờ BOS hoặc CHOCH trên khung vào lệnh'],['Chỉ kích hoạt lệnh sau khi tín hiệu đóng nến','Dùng điểm xác nhận để xác định điểm vô hiệu','Bỏ qua thiết lập nếu phản ứng yếu hoặc mâu thuẫn'],['Giá đã vào đúng vùng','Có tín hiệu đóng nến rõ','Động lượng hỗ trợ kịch bản','Điểm vào không quá xa điểm vô hiệu']]],
+  [/^mo hinh nen$/,['Mô hình nến là tín hiệu kích hoạt cuối cùng, thể hiện phản ứng mua bán ngay tại vùng giá đã được chuẩn bị trước.',['Quan sát vị trí mô hình thay vì chỉ hình dạng','Ưu tiên nến từ chối mạnh hoặc engulfing rõ','So sánh kích thước với các nến gần nhất'],['Dùng mức cao/thấp của mô hình làm điểm kích hoạt','Đặt dừng lỗ ngoài cực trị hợp lý','Không dùng mô hình nến đơn lẻ giữa vùng nhiễu'],['Mô hình nằm đúng vùng giá','Cùng hướng HTF và cấu trúc','Nến xác nhận đã đóng','Tỷ lệ lợi nhuận/rủi ro đạt yêu cầu']]],
+  [/^quan tri rui ro$/,['Quản trị rủi ro quyết định khả năng tồn tại lâu dài của hệ thống bằng cách giới hạn tổn thất và chuẩn hóa quy mô lệnh.',['Xác định SL theo điểm vô hiệu của cấu trúc','Đặt TP tại vùng thanh khoản hoặc vùng cản kế tiếp','Tính RR trước khi đặt lệnh'],['Giữ mức rủi ro cố định cho mỗi giao dịch','Không nới SL khi kịch bản đã sai','Giảm khối lượng khi thị trường biến động mạnh'],['SL nằm tại điểm vô hiệu hợp lý','TP có cơ sở kỹ thuật','RR đáp ứng nguyên tắc hệ thống','Khối lượng lệnh đã được tính trước']]],
+  [/swing high|swing low/,['Swing High và Swing Low là các điểm xoay chiều nổi bật, dùng để đọc cấu trúc và xác định hướng đi của giá.',['Tìm đỉnh/đáy có phản ứng giá rõ ràng hai bên','Ưu tiên điểm xoay tạo ra chuyển động mạnh','Quan sát việc giá phá hay giữ các điểm này'],['Nối các swing để đọc HH, HL, LH, LL','Đặt cảnh báo quanh swing quan trọng','Dùng swing gần nhất làm mốc vô hiệu'],['Swing có thực sự nổi bật','Cấu trúc hiện tại tăng, giảm hay đi ngang','Có thanh khoản nằm quanh swing','Dừng lỗ nằm ngoài vùng nhiễu']]],
+  [/supply|demand/,['Supply và Demand là vùng giá nơi mất cân bằng mua bán từng tạo ra chuyển động mạnh.',['Tìm vùng tích lũy ngắn trước cú đẩy mạnh','Ưu tiên vùng chưa bị kiểm tra nhiều lần','Đánh giá lực rời vùng và cấu trúc bị phá'],['Chờ giá quay lại vùng thay vì đuổi theo','Tìm tín hiệu xác nhận tại vùng','Đặt điểm vô hiệu phía ngoài vùng'],['Vùng còn mới','Có cú rời vùng đủ mạnh','Cùng hướng xu hướng chính','Có xác nhận trước khi vào lệnh']]],
+  [/breakout|retest/,['Breakout & Retest mô tả việc giá phá một mốc quan trọng rồi quay lại kiểm tra mốc đó trước khi tiếp diễn.',['Nến đóng rõ ràng ngoài vùng cản','Lực phá đủ mạnh và có sự mở rộng biên độ','Retest giữ được phía vừa phá'],['Không vào lệnh ngay tại cú phá thiếu xác nhận','Chờ phản ứng giá tại điểm retest','Hủy ý tưởng nếu giá đóng trở lại vùng cũ'],['Breakout có nến đóng xác nhận','Retest không xuyên sâu','Không phá vào vùng cản lớn kế tiếp','Tỷ lệ lợi nhuận/rủi ro hợp lý']]],
+  [/bos|choch|market structure/,['BOS xác nhận xu hướng tiếp diễn, còn CHOCH cảnh báo cấu trúc có khả năng chuyển hướng.',['Đánh dấu các swing có ý nghĩa','BOS phá swing theo hướng xu hướng','CHOCH phá swing bảo vệ xu hướng hiện tại'],['Dùng BOS để ưu tiên lệnh thuận xu hướng','Dùng CHOCH như cảnh báo, chờ thêm xác nhận','Kết hợp vùng Supply/Demand để tìm điểm vào'],['Swing bị phá có quan trọng','Cú phá là thân nến hay chỉ râu nến','Có vùng giá hỗ trợ ý tưởng','Điểm vô hiệu đã rõ']]],
+  [/liquidity/,['Liquidity Sweep xảy ra khi giá quét qua vùng đặt lệnh phổ biến rồi nhanh chóng quay lại, thường tạo tín hiệu đảo chiều ngắn hạn.',['Tìm cụm đỉnh bằng nhau hoặc đáy bằng nhau','Quan sát cú xuyên mốc rồi đóng trở lại','Kiểm tra phản ứng mạnh sau cú quét'],['Chờ xác nhận cấu trúc sau cú quét','Đặt dừng lỗ ngoài cực trị vừa tạo','Ưu tiên cú quét tại vùng giá quan trọng'],['Có vùng thanh khoản rõ ràng','Giá đã đóng trở lại sau cú quét','Có CHOCH/BOS xác nhận','Không vào quá muộn']]],
+  [/ema|golden cross|death cross/,['EMA phản ánh giá trung bình có trọng số, giúp nhận diện hướng xu hướng và vùng hỗ trợ/kháng cự động.',['Quan sát độ dốc và thứ tự các EMA','Giá giữ cùng một phía EMA cho thấy xu hướng khỏe','Giao cắt có ý nghĩa hơn khi đi cùng cấu trúc'],['Dùng EMA làm bộ lọc xu hướng','Chờ phản ứng giá thay vì chạm EMA là vào lệnh','Kết hợp cấu trúc và Price Action'],['EMA có độ dốc rõ','Giá không đi ngang quanh EMA','Tín hiệu cùng hướng khung lớn','Có điểm vô hiệu hợp lý']]],
+  [/rsi|phan ky|qua mua|qua ban|trung tam/,['RSI đo động lượng tương đối, hữu ích để đánh giá sức mạnh xu hướng, vùng cực đoan và phân kỳ.',['RSI trên/dưới 50 cho biết thiên hướng động lượng','Vùng 70/30 chỉ là cảnh báo, không tự động đảo chiều','Phân kỳ cần đi cùng cấu trúc giá'],['Dùng RSI làm xác nhận thay vì tín hiệu độc lập','Ưu tiên tín hiệu cùng xu hướng chính','Chờ Price Action tại vùng quan trọng'],['Bối cảnh xu hướng đã rõ','RSI có tín hiệu thực sự nổi bật','Giá đang ở vùng đáng chú ý','Có xác nhận từ hành vi giá']]],
+  [/pin bar|hammer|engulfing|inside bar|doji|spinning|morning|evening/,['Mô hình nến thể hiện cuộc đấu giữa bên mua và bên bán trong một khoảng thời gian, nhưng chỉ có giá trị khi đặt đúng bối cảnh.',['Quan sát vị trí xuất hiện của mô hình','So sánh kích thước với các nến gần nhất','Đánh giá hướng đóng cửa và phần râu nến'],['Chờ mô hình tại vùng hỗ trợ/kháng cự hoặc Supply/Demand','Dùng mức cao/thấp mô hình làm điểm xác nhận','Không giao dịch mô hình nằm giữa vùng nhiễu'],['Mô hình nằm đúng vị trí','Có cấu trúc hoặc xu hướng hỗ trợ','Nến xác nhận đã đóng','Rủi ro được giới hạn']]],
+  [/htf|mtf|ltf|khung thoi gian/,['Phân tích đa khung thời gian giúp nối bối cảnh lớn với vùng thiết lập và điểm vào lệnh chính xác.',['HTF xác định xu hướng và vùng lớn','MTF xây dựng kịch bản giao dịch','LTF tìm tín hiệu kích hoạt'],['Đi từ khung lớn xuống khung nhỏ','Không để nhiễu LTF phủ nhận bối cảnh HTF quá sớm','Chỉ vào lệnh khi các khung không mâu thuẫn lớn'],['Xu hướng HTF rõ ràng','Vùng MTF đã xác định','LTF có tín hiệu xác nhận','Điểm dừng lỗ phù hợp cấu trúc']]]
+];
+const matched = lessons.find(([pattern]) => pattern.test(key));
+const fallbackInfo = matched ? {concept:matched[1][0],identify:matched[1][1],apply:matched[1][2],checklist:matched[1][3]} : defaultInfo;
+
+function renderInfo(info) {
+  document.querySelector('#concept').textContent = info.concept || '';
+  for (const [id, values] of [['identify',info.identify],['apply',info.apply],['checklist',info.checklist]]) {
+    const items = Array.isArray(values) ? values : [];
+    document.querySelector(`#${id}`).replaceChildren(...items.map(value => Object.assign(document.createElement('li'),{textContent:value})));
+  }
+}
+renderInfo(fallbackInfo);
+
+fetch('data/content.json', {cache:'no-store'})
+  .then(response => response.ok ? response.json() : Promise.reject(new Error('Content data unavailable')))
+  .then(data => {
+    const entry = data.entries?.find(candidate => {
+      try { return new RegExp(candidate.match, 'i').test(key); } catch { return false; }
+    });
+    if (entry) renderInfo(entry);
+  })
+  .catch(() => {});
+
+const accordionPanels = [...document.querySelectorAll('.panel')];
+accordionPanels.forEach(panel => {
+  const toggle = panel.querySelector('.panel-toggle');
+  const content = panel.querySelector('.panel-content');
+  toggle.addEventListener('click', () => {
+    const shouldOpen = !panel.classList.contains('open');
+    accordionPanels.forEach(otherPanel => {
+      otherPanel.classList.remove('open');
+      otherPanel.querySelector('.panel-toggle').setAttribute('aria-expanded', 'false');
+      otherPanel.querySelector('.panel-content').setAttribute('aria-hidden', 'true');
+    });
+    if (shouldOpen) {
+      panel.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      content.setAttribute('aria-hidden', 'false');
+    }
+  });
+  content.setAttribute('aria-hidden', 'true');
+});
+
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href]');
+  if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target === '_blank') return;
+  const destination = new URL(link.href, location.href);
+  if (destination.origin !== location.origin) return;
+  event.preventDefault();
+  const transitionX = window.innerWidth / 2;
+  const transitionY = window.innerHeight / 2;
+  document.body.style.setProperty('--transition-x', `${transitionX}px`);
+  document.body.style.setProperty('--transition-y', `${transitionY}px`);
+  try {
+    sessionStorage.setItem('ptkt-page-transition', JSON.stringify({ x: transitionX, y: transitionY }));
+  } catch {}
+  document.body.classList.add('page-leaving');
+  setTimeout(() => location.href = destination.href, 490);
+});
+requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.remove('transition-entering')));
+window.addEventListener('pageshow', () => {
+  document.body.classList.remove('page-leaving');
+  requestAnimationFrame(() => document.documentElement.classList.remove('transition-entering'));
+});
+</script>
+</body>
+</html>
