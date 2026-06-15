@@ -21,6 +21,7 @@ button,input,textarea{font:inherit}button{cursor:pointer}
 .drawer-head{display:flex;align-items:center;gap:13px;padding-bottom:17px;border-bottom:1px solid #26313d}.drawer-badge{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;border:1px solid #b7ff0060;color:var(--green);background:#b7ff0010;font:900 12px ui-monospace,monospace}.drawer-head h2{margin:0;font-size:21px}.drawer-head p{margin:5px 0 0;color:#8c98a7;font-size:11px}.drawer-head .close{margin-left:auto}
 .field{display:grid;gap:7px;margin-top:15px}.field>span,.section-label{color:#8d99a8;font-size:10px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase}.field input,.field textarea,.item-row input,.settings input{width:100%;border:1px solid #2b3744;border-radius:11px;background:#080d13;color:#edf2f8;padding:11px 12px;outline:none}.field textarea{min-height:105px;resize:vertical;line-height:1.55}.field input:focus,.field textarea:focus,.item-row input:focus,.settings input:focus{border-color:var(--green);box-shadow:0 0 0 3px #b7ff0010}
 .edit-section{margin-top:18px;padding:16px;border:1px solid #26313d;border-radius:16px;background:#0a1017}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.item-list{display:grid;gap:8px}.item-row{display:grid;grid-template-columns:28px 1fr 35px;gap:8px;align-items:center}.item-index{color:var(--green);font:900 10px ui-monospace,monospace}.remove-item{width:35px;height:35px;padding:0;border:1px solid #ff647845;border-radius:9px;background:#ff647808;color:#ff8293}.drawer-actions{position:sticky;bottom:-20px;display:flex;gap:9px;margin:22px -20px -20px;padding:15px 20px;background:#080c12ef;border-top:1px solid #26313d;backdrop-filter:blur(15px)}.drawer-actions .primary{margin-left:auto}
+.image-picker{display:block;padding:17px;border:1px dashed #b7ff0066;border-radius:14px;background:#b7ff0008;color:#dce4ed;text-align:center;font-size:11px;font-weight:850;transition:.2s}.image-picker:hover{border-color:var(--green);color:var(--green);background:#b7ff0010}.image-picker input{display:none}.image-hint{margin:9px 0 0;color:#7f8c9b;font-size:9px;line-height:1.5}.image-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.image-item{position:relative;aspect-ratio:16/10;border:1px solid #2b3744;border-radius:12px;background:#06090d;overflow:hidden}.image-item img{width:100%;height:100%;object-fit:cover}.image-remove{position:absolute;right:7px;top:7px;width:30px;height:30px;border:1px solid #ff647880;border-radius:9px;background:#080b10dd;color:#ff8293;font-size:17px}.image-status{position:absolute;left:7px;bottom:7px;padding:4px 6px;border-radius:6px;background:#080b10dd;color:var(--green);font-size:8px;font-weight:900}
 .modal{position:fixed;z-index:61;left:50%;top:50%;width:min(660px,calc(100% - 24px));max-height:min(760px,calc(100% - 24px));padding:20px;border:1px solid var(--green);border-radius:20px;background:#0c121a;box-shadow:0 30px 100px #000e;transform:translate(-50%,-45%) scale(.96);opacity:0;pointer-events:none;transition:.25s;overflow:auto}.modal.open{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.modal h2{margin:0;font-size:18px}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:17px}.catalog-list{display:grid;gap:8px}.catalog-item{display:flex;align-items:center;gap:12px;width:100%;padding:12px;border:1px solid #26313d;border-radius:13px;background:#090f16;color:#eaf0f7;text-align:left}.catalog-item:hover{border-color:var(--green);background:#b7ff0009}.catalog-num{color:var(--green);font:900 10px ui-monospace,monospace}.catalog-item span:last-child{color:#80909e;font-size:10px;margin-left:auto}
 .toast{position:fixed;z-index:70;left:50%;bottom:62px;max-width:min(620px,calc(100% - 24px));padding:11px 15px;border:1px solid #324050;border-radius:12px;background:#111923;color:#dce3eb;box-shadow:0 16px 50px #000c;transform:translate(-50%,30px);opacity:0;pointer-events:none;transition:.25s;font-size:12px}.toast.show{transform:translate(-50%,0);opacity:1}.toast.good{border-color:#b7ff0070;color:var(--green)}.toast.bad{border-color:#ff647870;color:#ff8293}
 @media(max-width:720px){.admin-dock{right:7px;top:7px;width:185px}.dock-tip{bottom:8px;width:calc(100% - 20px);text-align:center}.drawer{padding:15px}.drawer-actions{margin:20px -15px -15px;padding:13px 15px}.settings-grid{grid-template-columns:1fr}.modal{padding:15px}}
@@ -61,6 +62,12 @@ button,input,textarea{font:inherit}button{cursor:pointer}
   <div class="drawer-head"><div class="drawer-badge" id="drawerBadge">✎</div><div><h2 id="drawerTitle">Chỉnh sửa nội dung</h2><p id="drawerSubtitle">Bạn đang sửa nội dung hiển thị trên website thật</p></div><button class="btn icon close" id="closeDrawer" type="button">×</button></div>
   <label class="field"><span>Tên nội dung</span><input id="label" placeholder="Ví dụ: Swing High / Low"></label>
   <label class="field"><span>Khái niệm cốt lõi</span><textarea id="concept" placeholder="Giải thích ngắn gọn về nội dung này"></textarea></label>
+  <section class="edit-section">
+    <div class="section-head"><span class="section-label">Hình ảnh minh họa</span></div>
+    <label class="image-picker">+ Chọn ảnh từ máy<input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple></label>
+    <p class="image-hint">Hỗ trợ PNG, JPG, WEBP, GIF. Tối đa 5 MB mỗi ảnh. Ảnh mới sẽ được tải lên khi bạn đẩy thay đổi lên web.</p>
+    <div class="image-list" id="imageList"></div>
+  </section>
   <section class="edit-section"><div class="section-head"><span class="section-label">Cách nhận diện</span><button class="btn" type="button" data-add="identify">+ Thêm dòng</button></div><div class="item-list" id="identifyList"></div></section>
   <section class="edit-section"><div class="section-head"><span class="section-label">Cách áp dụng</span><button class="btn" type="button" data-add="apply">+ Thêm dòng</button></div><div class="item-list" id="applyList"></div></section>
   <section class="edit-section"><div class="section-head"><span class="section-label">Checklist trước giao dịch</span><button class="btn" type="button" data-add="checklist">+ Thêm dòng</button></div><div class="item-list" id="checklistList"></div></section>
@@ -92,6 +99,7 @@ const ADMIN_PASSWORD_HASH='2dd56f201e9b70eabba54953d37a5470a7b37e176129059d1b67d
 const CONTENT_PATH='data/content.json';
 const $=selector=>document.querySelector(selector);
 let data={version:1,entries:[]},selectedId=null,editingEntry=null,sourceItem='',remoteSha=null,dirty=false,toastTimer;
+const pendingUploads=new Map();
 const normalize=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 const escapeRegex=value=>normalize(value).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const makeId=()=>`lesson-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`;
@@ -149,16 +157,45 @@ function makeItemRow(section,value=''){
 function renumber(section){[...$(`#${section}List`).children].forEach((row,index)=>row.querySelector('.item-index').textContent=String(index+1).padStart(2,'0'))}
 function renderItems(section,values=[]){$(`#${section}List`).replaceChildren(...values.map(value=>makeItemRow(section,value)));renumber(section)}
 function collectItems(section){return[...$(`#${section}List`).querySelectorAll('input')].map(input=>input.value.trim()).filter(Boolean)}
+function imagePreview(path){return pendingUploads.get(path)?.dataUrl||`../${path}`}
+function renderImages(){
+  const images=Array.isArray(editingEntry?.images)?editingEntry.images:[];
+  $('#imageList').replaceChildren(...images.map(path=>{
+    const item=document.createElement('div');item.className='image-item';
+    const image=document.createElement('img');image.src=imagePreview(path);image.alt='';
+    const remove=document.createElement('button');remove.type='button';remove.className='image-remove';remove.textContent='×';
+    remove.addEventListener('click',()=>{editingEntry.images=editingEntry.images.filter(imagePath=>imagePath!==path);pendingUploads.delete(path);renderImages();setDirty()});
+    item.append(image,remove);
+    if(pendingUploads.has(path)){const status=document.createElement('span');status.className='image-status';status.textContent='CHỜ TẢI LÊN';item.append(status)}
+    return item;
+  }));
+}
+function fileToDataUrl(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(new Error(`Không đọc được ảnh ${file.name}.`));reader.readAsDataURL(file)})}
+async function addImages(files){
+  if(!editingEntry)return;
+  editingEntry.images=Array.isArray(editingEntry.images)?editingEntry.images:[];
+  for(const file of files){
+    if(!file.type.startsWith('image/')){toast(`${file.name} không phải file ảnh.`,'bad');continue}
+    if(file.size>5*1024*1024){toast(`${file.name} lớn hơn 5 MB.`,'bad');continue}
+    const extension=(file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')||'jpg';
+    const path=`assets/uploads/${editingEntry.id}-${Date.now()}-${Math.random().toString(36).slice(2,6)}.${extension}`;
+    const dataUrl=await fileToDataUrl(file);
+    pendingUploads.set(path,{dataUrl,base64:String(dataUrl).split(',')[1],name:file.name});
+    editingEntry.images.push(path);
+  }
+  renderImages();setDirty();
+}
 
 function openEditor(id,item=''){
   closeModals();selectedId=id;sourceItem=item;
   const existing=id?currentEntry():null;
-  editingEntry=existing?structuredClone(existing):{id:makeId(),label:item,match:item?`^${escapeRegex(item)}$`:'',concept:'',identify:[],apply:[],checklist:[]};
+  editingEntry=existing?structuredClone(existing):{id:makeId(),label:item,match:item?`^${escapeRegex(item)}$`:'',concept:'',identify:[],apply:[],checklist:[],images:[]};
+  editingEntry.images=Array.isArray(editingEntry.images)?editingEntry.images:[];
   $('#drawerBadge').textContent=existing?'✎':'+';
   $('#drawerTitle').textContent=item||displayName(editingEntry);
   $('#drawerSubtitle').textContent=existing?'Nội dung này đã có dữ liệu. Sửa rồi lưu bản nháp.':'Mục này chưa có dữ liệu riêng. Lưu để tạo mới.';
   $('#label').value=item||editingEntry.label||'';$('#concept').value=editingEntry.concept||'';$('#match').value=editingEntry.match||'';
-  renderItems('identify',editingEntry.identify);renderItems('apply',editingEntry.apply);renderItems('checklist',editingEntry.checklist);
+  renderImages();renderItems('identify',editingEntry.identify);renderItems('apply',editingEntry.apply);renderItems('checklist',editingEntry.checklist);
   $('#deleteBtn').style.display=existing?'block':'none';$('#drawer').classList.add('open');$('#overlay').classList.add('open');$('#drawer').setAttribute('aria-hidden','false');
 }
 function closeEditor(){$('#drawer').classList.remove('open');$('#drawer').setAttribute('aria-hidden','true');if(!document.querySelector('.modal.open'))$('#overlay').classList.remove('open')}
@@ -190,9 +227,20 @@ function decodeBase64(value){const bytes=Uint8Array.from(atob(value.replace(/\n/
 function encodeBase64(value){const bytes=new TextEncoder().encode(value);let binary='';bytes.forEach(byte=>binary+=String.fromCharCode(byte));return btoa(binary)}
 function apiHeaders(token){return{'Accept':'application/vnd.github+json','Authorization':`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28'}}
 function connection(){const config=saveConfig(),token=$('#token').value.trim();if(!config.owner||!config.repo||!config.branch||!token)throw new Error('Mở GitHub và nhập token trước.');return{...config,token}}
+async function uploadPendingImages({owner,repo,branch,token}){
+  const uploads=[...pendingUploads.entries()].filter(([path])=>data.entries.some(entry=>(entry.images||[]).includes(path)));
+  for(let index=0;index<uploads.length;index++){
+    const[path,file]=uploads[index];toast(`Đang tải ảnh ${index+1}/${uploads.length}: ${file.name}`);
+    const encodedPath=path.split('/').map(encodeURIComponent).join('/');
+    const url=`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${encodedPath}`;
+    const response=await fetch(url,{method:'PUT',headers:{...apiHeaders(token),'Content-Type':'application/json'},body:JSON.stringify({message:`Upload image ${file.name}`,branch,content:file.base64})});
+    const payload=await response.json();if(!response.ok)throw new Error(payload.message||`Không tải được ảnh ${file.name}.`);
+    pendingUploads.delete(path);
+  }
+}
 async function loadFromSite(){toast('Đang tải dữ liệu...');const response=await fetch(`../${CONTENT_PATH}?t=${Date.now()}`,{cache:'no-store'});if(!response.ok)throw new Error(`Không tải được dữ liệu (${response.status}).`);data=await response.json();remoteSha=null;setDirty(false);renderCatalog();toast(`Đã tải ${data.entries.length} nội dung từ website.`,'good')}
 async function connectGitHub(){const{owner,repo,branch,token}=connection(),url=`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${CONTENT_PATH}?ref=${encodeURIComponent(branch)}`;toast('Đang kết nối GitHub...');const response=await fetch(url,{headers:apiHeaders(token)}),payload=await response.json();if(!response.ok)throw new Error(payload.message||`GitHub lỗi ${response.status}.`);data=JSON.parse(decodeBase64(payload.content));remoteSha=payload.sha;setDirty(false);renderCatalog();closeModals();toast('Đã kết nối GitHub và tải dữ liệu mới nhất.','good')}
-async function pushGitHub(){const{owner,repo,branch,token}=connection(),url=`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${CONTENT_PATH}`;toast('Đang đẩy thay đổi lên GitHub...');let sha=remoteSha;if(!sha){const current=await fetch(`${url}?ref=${encodeURIComponent(branch)}`,{headers:apiHeaders(token)});if(current.ok)sha=(await current.json()).sha}const body={message:'Update PTKT content from direct editor',branch,content:encodeBase64(JSON.stringify(data,null,2)+'\n')};if(sha)body.sha=sha;const response=await fetch(url,{method:'PUT',headers:{...apiHeaders(token),'Content-Type':'application/json'},body:JSON.stringify(body)}),payload=await response.json();if(!response.ok)throw new Error(payload.message||`GitHub lỗi ${response.status}.`);remoteSha=payload.content?.sha||null;setDirty(false);toast('Đã đẩy thành công. Website sẽ tự cập nhật sau khoảng một phút.','good')}
+async function pushGitHub(){const connectionInfo=connection(),{owner,repo,branch,token}=connectionInfo,url=`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${CONTENT_PATH}`;toast('Đang đẩy thay đổi lên GitHub...');let sha=remoteSha;if(!sha){const current=await fetch(`${url}?ref=${encodeURIComponent(branch)}`,{headers:apiHeaders(token)});if(current.ok)sha=(await current.json()).sha}await uploadPendingImages(connectionInfo);const body={message:'Update PTKT content from direct editor',branch,content:encodeBase64(JSON.stringify(data,null,2)+'\n')};if(sha)body.sha=sha;const response=await fetch(url,{method:'PUT',headers:{...apiHeaders(token),'Content-Type':'application/json'},body:JSON.stringify(body)}),payload=await response.json();if(!response.ok)throw new Error(payload.message||`GitHub lỗi ${response.status}.`);remoteSha=payload.content?.sha||null;setDirty(false);toast('Đã đẩy nội dung và ảnh thành công. Website sẽ tự cập nhật sau khoảng một phút.','good')}
 async function run(action){try{await action()}catch(error){toast(error.message||'Có lỗi xảy ra.','bad')}}
 
 $('#siteFrame').addEventListener('load',injectEditorIntoSite);
@@ -203,6 +251,7 @@ $('#settingsBtn').addEventListener('click',()=>openModal('settings'));$('#closeS
 $('#closeDrawer').addEventListener('click',closeEditor);$('#cancelBtn').addEventListener('click',closeEditor);$('#saveBtn').addEventListener('click',saveEditor);$('#deleteBtn').addEventListener('click',deleteEntry);
 $('#loadSiteBtn').addEventListener('click',()=>run(loadFromSite));$('#connectBtn').addEventListener('click',()=>run(connectGitHub));$('#pushBtn').addEventListener('click',()=>run(pushGitHub));
 $('#overlay').addEventListener('click',()=>{$('#drawer').classList.contains('open')?closeEditor():closeModals()});
+$('#imageInput').addEventListener('change',event=>run(async()=>{await addImages([...event.target.files]);event.target.value=''}));
 document.querySelectorAll('[data-add]').forEach(button=>button.addEventListener('click',()=>{const section=button.dataset.add;$(`#${section}List`).append(makeItemRow(section));renumber(section);setDirty()}));
 ['label','concept','match'].forEach(id=>$(`#${id}`).addEventListener('input',()=>setDirty()));
 loadConfig();run(loadFromSite);if(sessionStorage.getItem('ptkt-admin-unlocked')==='1')unlockAdmin();
