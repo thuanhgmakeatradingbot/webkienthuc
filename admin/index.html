@@ -9,6 +9,9 @@
 *{box-sizing:border-box}
 html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#07090d;color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
 button,input,textarea{font:inherit}button{cursor:pointer}
+.admin-app{width:100%;height:100%;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s}.admin-app.unlocked{opacity:1;visibility:visible;pointer-events:auto}
+.login-gate{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 40%,#171429 0,#07090d 55%,#040509 100%);transition:opacity .35s,visibility .35s}.login-gate.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.login-card{width:min(430px,100%);padding:28px;border:1px solid #b7ff0066;border-radius:26px;background:linear-gradient(155deg,#101720f5,#070b10fa);box-shadow:0 30px 100px #000e,0 0 65px #b7ff0018;text-align:center}.login-mark{width:62px;height:62px;margin:0 auto 17px;border:1px solid #b7ff0080;border-radius:20px;display:grid;place-items:center;background:#b7ff0012;color:var(--green);font-size:25px;font-weight:1000}.login-card h1{margin:0;font-size:24px}.login-card p{margin:9px 0 20px;color:#929cab;font-size:12px;line-height:1.6}.login-form{display:grid;gap:10px}.login-form input{width:100%;border:1px solid #2b3744;border-radius:13px;background:#080d13;color:#edf2f8;padding:13px 14px;outline:none;text-align:center}.login-form input:focus{border-color:var(--green);box-shadow:0 0 0 3px #b7ff0010}.login-error{min-height:17px;color:#ff8293;font-size:11px}.login-submit{padding:12px;border:1px solid var(--green);border-radius:12px;background:var(--green);color:#071006;font-weight:900}
 .site-frame{display:block;width:100%;height:100%;border:0;background:#07090d}
 .admin-dock{position:fixed;z-index:40;right:14px;top:14px;width:210px;padding:10px;border:1px solid #b7ff0066;border-radius:18px;background:#090e15ee;box-shadow:0 18px 70px #000d,0 0 35px #b7ff0018;backdrop-filter:blur(18px)}
 .admin-brand{display:flex;align-items:center;gap:9px;padding:4px 4px 10px}.admin-mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid #b7ff0070;border-radius:11px;background:#b7ff0012;color:var(--green);font-weight:1000}.admin-brand strong{display:block;font-size:12px}.admin-brand small{display:block;margin-top:3px;color:#8b96a5;font-size:8px;letter-spacing:1.2px}.save-state{display:block;margin:0 4px 9px;color:#909ba9;font-size:9px}.save-state.dirty{color:#ffc05e}.save-state.good{color:var(--green)}
@@ -24,7 +27,21 @@ button,input,textarea{font:inherit}button{cursor:pointer}
 </style>
 </head>
 <body>
-<iframe class="site-frame" id="siteFrame" src="../index.html?admin-preview=1" title="PTKT website thật"></iframe>
+<section class="login-gate" id="loginGate">
+  <div class="login-card">
+    <div class="login-mark">A</div>
+    <h1>PTKT Admin</h1>
+    <p>Nhập mật khẩu quản trị để mở chế độ chỉnh sửa trực tiếp.</p>
+    <form class="login-form" id="loginForm">
+      <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Mật khẩu admin" autofocus>
+      <div class="login-error" id="loginError"></div>
+      <button class="login-submit" type="submit">Mở trang Admin</button>
+    </form>
+  </div>
+</section>
+
+<div class="admin-app" id="adminApp">
+<iframe class="site-frame" id="siteFrame" data-src="../index.html?admin-preview=1" title="PTKT website thật"></iframe>
 
 <aside class="admin-dock">
   <div class="admin-brand"><div class="admin-mark">A</div><div><strong>CHẾ ĐỘ CHỈNH SỬA</strong><small>LIVE WEBSITE EDITOR</small></div></div>
@@ -33,7 +50,7 @@ button,input,textarea{font:inherit}button{cursor:pointer}
     <button class="btn" id="catalogBtn" type="button">Danh sách</button>
     <button class="btn" id="addBtn" type="button">+ Nội dung</button>
     <button class="btn" id="settingsBtn" type="button">GitHub</button>
-    <a class="btn" href="../index.html" target="_blank">Xem web</a>
+    <button class="btn" id="lockBtn" type="button">Khóa</button>
     <button class="btn primary wide" id="pushBtn" type="button">Đẩy thay đổi lên web</button>
   </div>
 </aside>
@@ -68,8 +85,10 @@ button,input,textarea{font:inherit}button{cursor:pointer}
   <div class="modal-actions"><button class="btn primary" id="catalogAddBtn" type="button">+ Thêm nội dung mới</button></div>
 </section>
 <div class="toast" id="toast"></div>
+</div>
 
 <script>
+const ADMIN_PASSWORD_HASH='2dd56f201e9b70eabba54953d37a5470a7b37e176129059d1b67dae1de5e0511';
 const CONTENT_PATH='data/content.json';
 const $=selector=>document.querySelector(selector);
 let data={version:1,entries:[]},selectedId=null,editingEntry=null,sourceItem='',remoteSha=null,dirty=false,toastTimer;
@@ -78,6 +97,21 @@ const escapeRegex=value=>normalize(value).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const makeId=()=>`lesson-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`;
 const displayName=entry=>entry?.label||entry?.match||'Nội dung mới';
 
+function unlockAdmin(){
+  sessionStorage.setItem('ptkt-admin-unlocked','1');
+  $('#loginError').textContent='';$('#adminPassword').value='';
+  if(!$('#siteFrame').getAttribute('src'))$('#siteFrame').src=$('#siteFrame').dataset.src;
+  $('#loginGate').classList.add('hidden');$('#adminApp').classList.add('unlocked');
+}
+async function hashPassword(value){
+  const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value));
+  return[...new Uint8Array(bytes)].map(byte=>byte.toString(16).padStart(2,'0')).join('');
+}
+function lockAdmin(){
+  sessionStorage.removeItem('ptkt-admin-unlocked');closeEditor();closeModals();
+  $('#adminApp').classList.remove('unlocked');$('#loginGate').classList.remove('hidden');
+  setTimeout(()=>$('#adminPassword').focus(),100);
+}
 function toast(message,type=''){clearTimeout(toastTimer);$('#toast').textContent=message;$('#toast').className=`toast show ${type}`;toastTimer=setTimeout(()=>$('#toast').className='toast',3300)}
 function setDirty(value=true){dirty=value;$('#saveState').textContent=dirty?'Có thay đổi chưa đẩy lên web':'Đã đồng bộ với website';$('#saveState').className=`save-state ${dirty?'dirty':'good'}`}
 function matchEntry(item){const key=normalize(item);return data.entries.find(entry=>{try{return new RegExp(entry.match,'i').test(key)}catch{return false}})}
@@ -162,6 +196,8 @@ async function pushGitHub(){const{owner,repo,branch,token}=connection(),url=`htt
 async function run(action){try{await action()}catch(error){toast(error.message||'Có lỗi xảy ra.','bad')}}
 
 $('#siteFrame').addEventListener('load',injectEditorIntoSite);
+$('#loginForm').addEventListener('submit',async event=>{event.preventDefault();if(await hashPassword($('#adminPassword').value)===ADMIN_PASSWORD_HASH)return unlockAdmin();$('#loginError').textContent='Mật khẩu không đúng.';$('#adminPassword').select()});
+$('#lockBtn').addEventListener('click',lockAdmin);
 $('#catalogBtn').addEventListener('click',()=>{renderCatalog();openModal('catalog')});$('#addBtn').addEventListener('click',()=>openEditor(null));$('#catalogAddBtn').addEventListener('click',()=>openEditor(null));
 $('#settingsBtn').addEventListener('click',()=>openModal('settings'));$('#closeSettings').addEventListener('click',closeModals);$('#closeCatalog').addEventListener('click',closeModals);
 $('#closeDrawer').addEventListener('click',closeEditor);$('#cancelBtn').addEventListener('click',closeEditor);$('#saveBtn').addEventListener('click',saveEditor);$('#deleteBtn').addEventListener('click',deleteEntry);
@@ -169,7 +205,7 @@ $('#loadSiteBtn').addEventListener('click',()=>run(loadFromSite));$('#connectBtn
 $('#overlay').addEventListener('click',()=>{$('#drawer').classList.contains('open')?closeEditor():closeModals()});
 document.querySelectorAll('[data-add]').forEach(button=>button.addEventListener('click',()=>{const section=button.dataset.add;$(`#${section}List`).append(makeItemRow(section));renumber(section);setDirty()}));
 ['label','concept','match'].forEach(id=>$(`#${id}`).addEventListener('input',()=>setDirty()));
-loadConfig();run(loadFromSite);
+loadConfig();run(loadFromSite);if(sessionStorage.getItem('ptkt-admin-unlocked')==='1')unlockAdmin();
 </script>
 </body>
 </html>
