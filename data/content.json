@@ -92,7 +92,7 @@
     {
       "id": "lesson-05",
       "match": "^quan tri rui ro$",
-      "label": "quan tri rui ro",
+      "label": "QUẢN TRỊ RỦI RO",
       "concept": "Quản trị rủi ro quyết định khả năng tồn tại lâu dài của hệ thống bằng cách giới hạn tổn thất và chuẩn hóa quy mô lệnh.",
       "identify": [
         "Xác định SL theo điểm vô hiệu của cấu trúc",
@@ -108,7 +108,8 @@
         "SL nằm tại điểm vô hiệu hợp lý",
         "TP có cơ sở kỹ thuật",
         "RR đáp ứng nguyên tắc hệ thống",
-        "Khối lượng lệnh đã được tính trước"
+        "Khối lượng lệnh đã được tính trước",
+        "Tôi yêu Phước Báu"
       ]
     },
     {
