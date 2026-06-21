@@ -190,23 +190,26 @@
     {
       "id": "lesson-09",
       "match": "bos|choch|market structure",
-      "label": "bos|choch|market structure",
-      "concept": "BOS xác nhận xu hướng tiếp diễn, còn CHOCH cảnh báo cấu trúc có khả năng chuyển hướng.",
+      "label": "Market Structure BOS/CHOCH",
+      "concept": "BOS (Break of Structure) là lúc phe đang cầm quyền tiếp tục công thành, phá luôn tuyến phòng thủ tiếp theo — xu hướng còn nguyên. \n\nCHOCH (Change of Character) là lúc phe đang thắng bất ngờ hụt hơi, để đối phương phá ngược vào tuyến phòng thủ của chính mình — báo hiệu địa bàn có thể đổi chủ.",
       "identify": [
-        "Đánh dấu các swing có ý nghĩa",
-        "BOS phá swing theo hướng xu hướng",
-        "CHOCH phá swing bảo vệ xu hướng hiện tại"
+        "Đánh dấu trước các điểm swing (đỉnh/đáy) thật sự có ý nghĩa, không đếm hết mọi đỉnh đáy nhỏ",
+        "BOS = giá phá swing theo đúng hướng xu hướng đang đi — quân nhà phá tiếp",
+        "CHOCH = giá phá swing đang bảo vệ xu hướng hiện tại — quân địch phá vào nhà"
       ],
       "apply": [
-        "Dùng BOS để ưu tiên lệnh thuận xu hướng",
-        "Dùng CHOCH như cảnh báo, chờ thêm xác nhận",
-        "Kết hợp vùng Supply/Demand để tìm điểm vào"
+        "Có BOS → ưu tiên tìm lệnh thuận xu hướng, không đánh ngược",
+        "Có CHOCH → coi là tín hiệu cảnh báo, chưa vào lệnh ngay mà chờ thêm xác nhận",
+        "Kết hợp với vùng Supply/Demand gần đó để chọn điểm vào lệnh chính xác hơn"
       ],
       "checklist": [
-        "Swing bị phá có quan trọng",
-        "Cú phá là thân nến hay chỉ râu nến",
-        "Có vùng giá hỗ trợ ý tưởng",
-        "Điểm vô hiệu đã rõ"
+        "Swing bị phá có đủ \"quan trọng\" (không phải đỉnh/đáy lặt vặt)",
+        "Cú phá là thân nến đóng cửa rõ ràng, không chỉ râu nến chọc qua",
+        "Có vùng giá (Supply/Demand) hỗ trợ thêm cho ý tưởng",
+        "Điểm vô hiệu hóa ý tưởng (invalidation) đã xác định rõ trước khi vào lệnh"
+      ],
+      "images": [
+        "assets/uploads/lesson-09-1782026925450-wtna.png"
       ]
     },
     {
