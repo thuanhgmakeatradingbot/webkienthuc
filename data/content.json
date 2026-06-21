@@ -165,23 +165,26 @@
     {
       "id": "lesson-08",
       "match": "breakout|retest",
-      "label": "breakout|retest",
-      "concept": "Breakout & Retest mô tả việc giá phá một mốc quan trọng rồi quay lại kiểm tra mốc đó trước khi tiếp diễn.",
+      "label": "Breakout & Retest",
+      "concept": "Breakout & Retest là lúc một phe (Bò hoặc Gấu) phá vỡ tuyến phòng thủ của phe đối phương, rồi quay lại đúng chỗ vừa phá để \"cắm cờ\" — xác nhận địa bàn đã đổi chủ trước khi tiến tiếp.",
       "identify": [
-        "Nến đóng rõ ràng ngoài vùng cản",
-        "Lực phá đủ mạnh và có sự mở rộng biên độ",
-        "Retest giữ được phía vừa phá"
+        "Nến đóng cửa rõ ràng ngoài vùng cản — không phải chỉ chạm rồi rút",
+        "Lực phá đủ mạnh, biên độ nến mở rộng hẳn so với các nến trước",
+        "Khi quay lại retest, giá giữ được phía vừa chiếm — không lội ngược trở lại vùng cũ"
       ],
       "apply": [
-        "Không vào lệnh ngay tại cú phá thiếu xác nhận",
-        "Chờ phản ứng giá tại điểm retest",
-        "Hủy ý tưởng nếu giá đóng trở lại vùng cũ"
+        "Không vào lệnh ngay tại cú phá nếu thiếu xác nhận — dễ bị \"bull trap / bear trap\"",
+        "Chờ giá quay lại điểm retest, quan sát phản ứng giá tại đó rồi mới ra quyết định",
+        "Hủy ý tưởng ngay nếu giá đóng cửa trở lại vùng cũ — đó là dấu hiệu phá giả"
       ],
       "checklist": [
-        "Breakout có nến đóng xác nhận",
-        "Retest không xuyên sâu",
-        "Không phá vào vùng cản lớn kế tiếp",
-        "Tỷ lệ lợi nhuận/rủi ro hợp lý"
+        "Breakout có nến đóng cửa xác nhận, không phải râu nến",
+        "Retest không xuyên sâu qua lại vùng cũ",
+        "Phía trên (hoặc dưới) không còn vùng cản lớn quá gần chặn đường đi tiếp",
+        "Tỷ lệ lợi nhuận/rủi ro hợp lý trước khi vào lệnh"
+      ],
+      "images": [
+        "assets/uploads/lesson-08-1782026549244-820a.png"
       ]
     },
     {
