@@ -215,23 +215,26 @@
     {
       "id": "lesson-10",
       "match": "liquidity",
-      "label": "liquidity",
-      "concept": "Liquidity Sweep xảy ra khi giá quét qua vùng đặt lệnh phổ biến rồi nhanh chóng quay lại, thường tạo tín hiệu đảo chiều ngắn hạn.",
+      "label": "Liquidity Sweep & Grab",
+      "concept": "Liquidity Sweep là \"đòn đánh úp\" — phe lớn cố tình đẩy giá xuyên qua vùng có nhiều lệnh chờ (stop loss, lệnh chờ mua/bán) để \"gom đạn\" từ phe yếu, rồi quay đầu đi ngược lại. Đây là cách phe mạnh tiếp tế trước khi thực sự ra trận.",
       "identify": [
-        "Tìm cụm đỉnh bằng nhau hoặc đáy bằng nhau",
-        "Quan sát cú xuyên mốc rồi đóng trở lại",
-        "Kiểm tra phản ứng mạnh sau cú quét"
+        "Tìm cụm đỉnh bằng nhau hoặc đáy bằng nhau — nơi tập trung nhiều lệnh chờ",
+        "Quan sát cú giá xuyên qua mốc đó rồi đóng cửa quay trở lại, không trụ lại phía ngoài",
+        "Kiểm tra phản ứng mạnh sau cú quét — nến đảo chiều rõ, không lừ đừ CÁCH ÁP DỤNG"
       ],
       "apply": [
-        "Chờ xác nhận cấu trúc sau cú quét",
-        "Đặt dừng lỗ ngoài cực trị vừa tạo",
-        "Ưu tiên cú quét tại vùng giá quan trọng"
+        "Chờ xác nhận cấu trúc (BOS/CHOCH) sau cú quét, không vào lệnh ngay khi vừa thấy quét",
+        "Đặt dừng lỗ ngoài cực trị vừa tạo ra từ cú quét — không kê quá gần",
+        "Ưu tiên cú quét xảy ra tại vùng giá quan trọng (đỉnh/đáy lớn, vùng Supply/Demand), bỏ qua các cú quét ở vùng giá vô nghĩa"
       ],
       "checklist": [
-        "Có vùng thanh khoản rõ ràng",
-        "Giá đã đóng trở lại sau cú quét",
-        "Có CHOCH/BOS xác nhận",
-        "Không vào quá muộn"
+        "Có vùng thanh khoản rõ ràng (đỉnh/đáy bằng nhau) trước khi vào lệnh",
+        "Giá đã đóng cửa trở lại sau cú quét, không còn trụ ngoài vùng",
+        "Có CHOCH/BOS xác nhận đổi hướng sau cú quét",
+        "Không vào lệnh quá muộn — giá chưa chạy quá xa khỏi điểm quét"
+      ],
+      "images": [
+        "assets/uploads/lesson-10-1782027938458-8e1v.png"
       ]
     },
     {
