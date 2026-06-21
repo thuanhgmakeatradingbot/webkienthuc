@@ -141,24 +141,24 @@
     {
       "id": "lesson-07",
       "match": "supply|demand",
-      "label": "supply|demand",
-      "concept": "Supply và Demand là vùng giá nơi mất cân bằng mua bán từng tạo ra chuyển động mạnh.",
+      "label": "Supply & Demand Zone",
+      "concept": "Vùng Cung (Supply) = doanh trại phe Gấu — nơi phe Gấu từng phục kích, đè giá xuống mạnh\n\nVùng Cầu (Demand) = doanh trại phe Bò — nơi phe Bò từng phục kích, đẩy giá lên mạnh\n\nGiá không \"ngẫu nhiên\" quay lại vùng cũ — nó quay lại để phe thua trận trả nợ (các lệnh chưa khớp hết)",
       "identify": [
-        "Tìm vùng tích lũy ngắn trước cú đẩy mạnh",
-        "Ưu tiên vùng chưa bị kiểm tra nhiều lần",
-        "Đánh giá lực rời vùng và cấu trúc bị phá"
+        "3 dấu hiệu: (1) cú rời đi mạnh — nến thân dài, (2) base/vùng tích lũy hẹp trước khi rời, (3) chưa bị \"test\" lại lần nào (vùng càng \"trinh\" càng mạnh)",
+        "Tip: vùng hình thành sau 1 cú breakout/news mạnh thường chất hơn vùng hình thành lừ đừ"
       ],
       "apply": [
-        "Chờ giá quay lại vùng thay vì đuổi theo",
-        "Tìm tín hiệu xác nhận tại vùng",
+        "Vào lệnh khi giá quay lại vùng + có nến từ chối (rejection candle)",
+        "Đặt stop ngoài vùng, không đặt sát mép",
         "Đặt điểm vô hiệu phía ngoài vùng"
       ],
       "checklist": [
-        "Vùng còn mới",
+        "Vùng còn mới hay không, hay bị test nhiều lần",
         "Có cú rời vùng đủ mạnh",
         "Cùng hướng xu hướng chính",
         "Có xác nhận trước khi vào lệnh"
-      ]
+      ],
+      "images": []
     },
     {
       "id": "lesson-08",
