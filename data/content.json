@@ -116,23 +116,26 @@
     {
       "id": "lesson-06",
       "match": "swing high|swing low",
-      "label": "swing high|swing low",
-      "concept": "Swing High và Swing Low là các điểm xoay chiều nổi bật, dùng để đọc cấu trúc và xác định hướng đi của giá.",
+      "label": "Swing High / Low",
+      "concept": "Swing High là nơi doanh trại phe bò tấn công lên đến cùng rồi đuối sức, bị phe gấu phản công đẩy lùi. Swing Low là nơi phe gấu đánh xuống hết đạn, bị phe bò bật ngược lại. Đây chính là những \"chiến trường cũ\" – nhìn vào đó là biết phe nào đang thắng thế trên bản đồ giá.",
       "identify": [
-        "Tìm đỉnh/đáy có phản ứng giá rõ ràng hai bên",
-        "Ưu tiên điểm xoay tạo ra chuyển động mạnh",
-        "Quan sát việc giá phá hay giữ các điểm này"
+        "Tìm đỉnh/đáy có phản ứng giá rõ ràng hai bên (nến đảo chiều mạnh, bóng nến dài – dấu vết của một trận đánh thật sự)",
+        "Ưu tiên điểm xoay tạo ra chuyển động mạnh sau đó – đó là chỗ \"quân tiếp viện\" ồ ạt kéo vào",
+        "Quan sát việc giá phá hay giữ các điểm này để biết phe nào vừa chiếm thêm địa bàn"
       ],
       "apply": [
-        "Nối các swing để đọc HH, HL, LH, LL",
-        "Đặt cảnh báo quanh swing quan trọng",
-        "Dùng swing gần nhất làm mốc vô hiệu"
+        "Nối các swing để đọc HH–HL (bò đang mở rộng lãnh thổ) hoặc LH–LL (gấu đang lấn sân)",
+        "Đặt cảnh báo quanh swing quan trọng – trận chiến tiếp theo gần như chắc chắn nổ ra ở đó",
+        "Dùng swing gần nhất làm mốc vô hiệu: giá phá qua nghĩa là phe kia vừa giành lại địa bàn"
       ],
       "checklist": [
-        "Swing có thực sự nổi bật",
-        "Cấu trúc hiện tại tăng, giảm hay đi ngang",
-        "Có thanh khoản nằm quanh swing",
-        "Dừng lỗ nằm ngoài vùng nhiễu"
+        "Swing này có thực sự nổi bật, hay chỉ là nhiễu trong vùng giằng co?",
+        "Cấu trúc hiện tại đang tăng, giảm hay sideway?",
+        "Có thanh khoản (liquidity) nằm quanh swing – khả năng bị quét hàng trước khi đảo chiều thật?",
+        "Dừng lỗ đặt ngoài vùng nhiễu, không kẹp sát đỉnh/đáy (tránh bị \"bắn tỉa\")"
+      ],
+      "images": [
+        "assets/uploads/lesson-06-1782024210858-6cl0.png"
       ]
     },
     {
